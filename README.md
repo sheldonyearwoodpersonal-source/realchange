@@ -306,7 +306,7 @@ Fetches relevant images from Pexels.
 ### Authentication
 - Secure session management with Supabase Auth
 - HttpOnly cookies for session tokens
-- OAuth integration with Google
+- Email/Password authentication
 - Password requirements enforced
 
 ### Database Security

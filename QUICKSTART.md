@@ -95,14 +95,6 @@ Test each feature:
 
 ## What's Next?
 
-### Enable Google OAuth (Optional)
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com)
-2. Create OAuth 2.0 credentials
-3. Add redirect URI: `https://[your-project-ref].supabase.co/auth/v1/callback`
-4. In Supabase: **Authentication** → **Providers** → Enable Google
-5. Add Client ID and Secret
-
 ### Deploy to Production
 
 Choose your deployment platform:

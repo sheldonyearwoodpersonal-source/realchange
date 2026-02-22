@@ -34,14 +34,6 @@ const { data, error } = await supabase.auth.signInWithPassword({
   password: 'password123',
 });
 
-// Sign in with Google
-const { data, error } = await supabase.auth.signInWithOAuth({
-  provider: 'google',
-  options: {
-    redirectTo: `${window.location.origin}/`,
-  },
-});
-
 // Sign out
 await supabase.auth.signOut();
 
