@@ -4,6 +4,94 @@ A modern web application that empowers citizens to create meaningful change by c
 
 ![Real Change](https://img.shields.io/badge/Next.js-13-black) ![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue) ![Supabase](https://img.shields.io/badge/Supabase-2.0-green) ![License](https://img.shields.io/badge/license-MIT-blue)
 
+## Quick Start Guide
+
+### Step 1: Install Required Software
+
+Download and install these tools (if you don't have them already):
+
+1. **Node.js** (version 18 or higher)
+   - Download: [https://nodejs.org/](https://nodejs.org/)
+   - This includes npm (Node Package Manager)
+   - Verify installation: Open Command Prompt (Windows) or Terminal (Mac/Linux) and type:
+     ```bash
+     node --version
+     npm --version
+     ```
+
+2. **Git**
+   - Download: [https://git-scm.com/downloads](https://git-scm.com/downloads)
+   - Verify installation:
+     ```bash
+     git --version
+     ```
+
+### Step 2: Download the Project
+
+Open Command Prompt (Windows) or Terminal (Mac/Linux) and run:
+
+```bash
+git clone https://github.com/yourusername/real-change.git
+cd real-change
+```
+
+### Step 3: Install Project Dependencies
+
+In the project folder, run:
+
+```bash
+npm install
+```
+
+This will download all required packages (may take a few minutes).
+
+### Step 4: Set Up Environment Variables
+
+1. In the project folder, find the `.env.example` file
+2. Create a copy and rename it to `.env.local`
+3. Open `.env.local` in a text editor (Notepad, VS Code, etc.)
+4. Fill in your API keys:
+
+```env
+# Supabase Configuration (provided by project creator)
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+
+# AI API Keys
+GEMINI_API_KEY=your_gemini_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
+
+# Image Service
+PEXELS_API_KEY=your_pexels_api_key_here
+```
+
+**Note for Judges**: If you're evaluating this project, the Supabase credentials are already in the `.env` file. Just copy `.env` to `.env.local`:
+
+```bash
+cp .env .env.local
+```
+
+### Step 5: Run the Application
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+The application will start at [http://localhost:3000](http://localhost:3000)
+
+**To stop the server**: Press `Ctrl+C` in the terminal
+
+### Step 6: Build for Production (Optional)
+
+To create a production build:
+
+```bash
+npm run build
+npm start
+```
+
 ## Features
 
 ### Core Functionality
@@ -35,86 +123,38 @@ A modern web application that empowers citizens to create meaningful change by c
   - Google Gemini API for petition generation
   - Groq API for organization matching
 - **Image Service**: Pexels API for stock images
-- **Deployment**: Netlify with Next.js plugin
 - **Type Safety**: Full TypeScript with strict mode
 
-## Prerequisites
+## Troubleshooting
 
-Before you begin, ensure you have the following installed:
+### "Error: supabaseUrl is required"
 
-- **Node.js** 18.x or higher
-- **npm** or **yarn** package manager
-- **Git** for version control
+If you see this error:
+1. Make sure you created `.env.local` file (not just `.env`)
+2. Verify the file contains `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. Stop the dev server (`Ctrl+C`) and restart it (`npm run dev`)
 
-You'll also need accounts for:
+### Port Already in Use
 
-- [Supabase](https://supabase.com) - Database and authentication
-- [Google AI Studio](https://makersuite.google.com/app/apikey) - Gemini API key
-- [Groq](https://console.groq.com) - Groq API key
-- [Pexels](https://www.pexels.com/api/) - Image API key
+If port 3000 is already in use:
+1. Stop the server using that port
+2. Or run on a different port: `npm run dev -- -p 3001`
 
-## Getting Started
+### Build Errors
 
-### 1. Clone the Repository
+If you get build errors:
+1. Delete the `.next` folder
+2. Run `npm install` again
+3. Restart the dev server
 
-```bash
-git clone https://github.com/yourusername/real-change.git
-cd real-change
-```
+## Getting API Keys (For New Setup)
 
-### 2. Install Dependencies
+If you need to get your own API keys:
 
-```bash
-npm install
-```
-
-### 3. Set Up Supabase
-
-1. Create a new project at [supabase.com](https://supabase.com)
-2. Go to Project Settings > API to get your credentials
-3. The database migrations are in `supabase/migrations/` and will be applied automatically
-
-#### Configure Google OAuth (Optional)
-
-To enable Google sign-in:
-
-1. Go to your Supabase project dashboard
-2. Navigate to Authentication > Providers
-3. Enable the Google provider
-4. Follow Supabase's instructions to set up OAuth credentials from Google Cloud Console
-5. Add authorized redirect URIs
-
-### 4. Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# Supabase Configuration
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-
-# AI API Keys
-GEMINI_API_KEY=your_gemini_api_key_here
-GROQ_API_KEY=your_groq_api_key_here
-
-# Image Service
-PEXELS_API_KEY=your_pexels_api_key_here
-```
-
-**How to get API keys:**
-
-- **Supabase**: Project Settings > API in your Supabase dashboard
-- **Gemini**: [Google AI Studio](https://makersuite.google.com/app/apikey)
-- **Groq**: [Groq Console](https://console.groq.com)
-- **Pexels**: [Pexels API](https://www.pexels.com/api/)
-
-### 5. Run the Development Server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+- **Supabase**: Create account at [supabase.com](https://supabase.com), create project, get keys from Project Settings > API
+- **Gemini**: Get free key at [Google AI Studio](https://makersuite.google.com/app/apikey)
+- **Groq**: Sign up at [Groq Console](https://console.groq.com)
+- **Pexels**: Get free key at [Pexels API](https://www.pexels.com/api/)
 
 ## Database Schema
 
