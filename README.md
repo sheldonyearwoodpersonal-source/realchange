@@ -366,47 +366,16 @@ Fetches relevant images from Pexels.
 - XSS prevention
 - Safe HTML rendering
 
-## Deployment
+## Production Build
 
-### Deploy to Netlify
+To create a production build locally:
 
-1. **Connect Your Repository**
-   - Sign up at [netlify.com](https://netlify.com)
-   - Click "Add new site" > "Import an existing project"
-   - Connect your GitHub repository
+```bash
+npm run build
+npm start
+```
 
-2. **Configure Build Settings**
-   - Build command: `npm run build`
-   - Publish directory: `.next`
-   - The `netlify.toml` file is already configured
-
-3. **Add Environment Variables**
-   - Go to Site settings > Environment variables
-   - Add all variables from your `.env` file:
-     - `NEXT_PUBLIC_SUPABASE_URL`
-     - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-     - `GEMINI_API_KEY`
-     - `GROQ_API_KEY`
-     - `PEXELS_API_KEY`
-
-4. **Deploy**
-   - Click "Deploy site"
-   - Netlify will automatically build and deploy your site
-   - Get your live URL (e.g., `yoursite.netlify.app`)
-
-5. **Update Supabase Settings**
-   - Add your Netlify URL to Supabase:
-     - Authentication > URL Configuration
-     - Add Site URL: `https://yoursite.netlify.app`
-     - Add Redirect URLs for OAuth
-
-### Deploy to Vercel (Alternative)
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts to deploy
-4. Add environment variables in Vercel dashboard
-5. Update Supabase redirect URLs
+This will create an optimized production build in the `.next` folder and start the production server on port 3000.
 
 ## Development Tips
 
