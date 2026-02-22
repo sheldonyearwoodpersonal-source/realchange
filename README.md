@@ -6,54 +6,33 @@ A modern web application that empowers citizens to create meaningful change by c
 
 ## Quick Start Guide
 
-### Step 1: Install Required Software
+### Prerequisites
 
-Download and install these tools (if you don't have them already):
-
-1. **Node.js** (version 18 or higher)
-   - Download: [https://nodejs.org/](https://nodejs.org/)
+1. **Install Node.js** (version 18 or higher)
+   - Download: [https://nodejs.org/en/download](https://nodejs.org/en/download)
    - This includes npm (Node Package Manager)
-   - Verify installation: Open Command Prompt (Windows) or Terminal (Mac/Linux) and type:
-     ```bash
-     node --version
-     npm --version
-     ```
 
-2. **Git**
-   - Download: [https://git-scm.com/downloads](https://git-scm.com/downloads)
-   - Verify installation:
-     ```bash
-     git --version
-     ```
+2. **Install Git**
+   - Download: [https://git-scm.com/install/windows](https://git-scm.com/install/windows)
 
-### Step 2: Download the Project
+### Setup Instructions
 
-Open Command Prompt (Windows) or Terminal (Mac/Linux) and run:
+Open PowerShell and run the following commands:
 
-```bash
-git clone https://github.com/yourusername/real-change.git
-cd real-change
-```
-
-### Step 3: Install Project Dependencies
-
-In the project folder, run:
-
-```bash
+```powershell
+mkdir C:\dev -Force
+cd C:\dev
+git clone https://github.com/sheldonyearwoodpersonal-source/realchange.git
+cd realchange
 npm install
+Copy-Item .env.example .env.local
+notepad .env.local
 ```
 
-This will download all required packages (may take a few minutes).
-
-### Step 4: Set Up Environment Variables
-
-1. In the project folder, find the `.env.example` file
-2. Create a copy and rename it to `.env.local`
-3. Open `.env.local` in a text editor (Notepad, VS Code, etc.)
-4. Fill in your API keys:
+In the `.env.local` file that opens, insert your API keys:
 
 ```env
-# Supabase Configuration (provided by project creator)
+# Supabase Configuration
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
@@ -65,32 +44,15 @@ GROQ_API_KEY=your_groq_api_key_here
 PEXELS_API_KEY=your_pexels_api_key_here
 ```
 
-**Note for Judges**: If you're evaluating this project, the Supabase credentials are already in the `.env` file. Just copy `.env` to `.env.local`:
+Save and close the file, then start the development server:
 
-```bash
-cp .env .env.local
-```
-
-### Step 5: Run the Application
-
-Start the development server:
-
-```bash
+```powershell
 npm run dev
 ```
 
-The application will start at [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-**To stop the server**: Press `Ctrl+C` in the terminal
-
-### Step 6: Build for Production (Optional)
-
-To create a production build:
-
-```bash
-npm run build
-npm start
-```
+**To stop the server**: Press `Ctrl+C` in PowerShell
 
 ## Features
 
@@ -105,7 +67,6 @@ npm start
 
 ### Authentication
 - Email/Password authentication
-- Google OAuth integration
 - Secure session management with Supabase Auth
 
 ### User Experience

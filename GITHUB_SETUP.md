@@ -1,56 +1,131 @@
-# Setting Up Your GitHub Repository
+# Real Change - GitHub Setup Guide
 
-This guide will help you push your Real Change project to GitHub and set it up for collaboration.
+This guide walks you through setting up the Real Change project from GitHub.
 
-## Step 1: Initialize Git (If Not Already Done)
+## Prerequisites
 
-```bash
-cd /path/to/real-change
-git init
+Before you begin, you'll need to install:
+
+1. **Node.js** - Download from [https://nodejs.org/en/download](https://nodejs.org/en/download)
+2. **Git** - Download from [https://git-scm.com/install/windows](https://git-scm.com/install/windows)
+
+## Setup Instructions
+
+Open PowerShell and run the following commands:
+
+```powershell
+mkdir C:\dev -Force
+cd C:\dev
+git clone https://github.com/sheldonyearwoodpersonal-source/realchange.git
+cd realchange
+npm install
+Copy-Item .env.example .env.local
+notepad .env.local
 ```
 
-## Step 2: Create GitHub Repository
+## Configure Environment Variables
 
-### Option A: Via GitHub Website
+When Notepad opens, insert your API keys:
 
-1. Go to [github.com](https://github.com)
-2. Click the "+" icon → "New repository"
-3. Fill in:
-   - Repository name: `real-change`
-   - Description: "A platform for civic engagement through AI-powered petitions and organization matching"
-   - Visibility: Public (or Private if preferred)
-   - **Do NOT** initialize with README, .gitignore, or license (we already have these)
-4. Click "Create repository"
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
-### Option B: Via GitHub CLI
+# AI API Keys
+GEMINI_API_KEY=your_gemini_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 
-```bash
-# Install GitHub CLI if you haven't
-# macOS: brew install gh
-# Windows: winget install --id GitHub.cli
-
-gh auth login
-gh repo create real-change --public --description "A platform for civic engagement"
+# Image Service
+PEXELS_API_KEY=your_pexels_api_key_here
 ```
 
-## Step 3: Add Remote and Push
+Save the file and close Notepad.
 
-```bash
-# Add your GitHub repository as remote
-git remote add origin https://github.com/YOUR_USERNAME/real-change.git
+## Run the Application
 
-# Stage all files
-git add .
+Start the development server:
 
-# Create initial commit
-git commit -m "Initial commit: Real Change platform with AI-powered petitions and organization matching"
-
-# Push to GitHub
-git branch -M main
-git push -u origin main
+```powershell
+npm run dev
 ```
 
-## Step 4: Configure Repository Settings
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+**To stop the server**: Press `Ctrl+C` in PowerShell
+
+## Getting API Keys
+
+If you need to obtain API keys:
+
+- **Supabase**: Create account at [supabase.com](https://supabase.com), create a project, and get keys from Project Settings > API
+- **Gemini**: Get a free key at [Google AI Studio](https://makersuite.google.com/app/apikey)
+- **Groq**: Sign up at [Groq Console](https://console.groq.com)
+- **Pexels**: Get a free key at [Pexels API](https://www.pexels.com/api/)
+
+## What is Real Change?
+
+Real Change is a civic engagement platform that empowers citizens to create meaningful change by:
+
+- Matching local issues with organizations that have the authority to help
+- Generating well-structured petitions using AI
+- Collecting digital signatures and tracking petition progress
+- Organizing community events
+
+## Features
+
+- AI-powered organization matching using Groq
+- Smart petition generator using Google Gemini
+- Digital signature collection
+- Progress updates and timeline
+- Community events
+- Social sharing
+
+## Tech Stack
+
+- **Frontend**: Next.js 13, React 18, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Database**: Supabase (PostgreSQL)
+- **Authentication**: Supabase Auth (Email/Password)
+- **AI**: Google Gemini & Groq APIs
+- **Images**: Pexels API
+
+## Troubleshooting
+
+### "Error: supabaseUrl is required"
+
+If you see this error:
+1. Make sure you created `.env.local` file (not just `.env`)
+2. Verify the file contains `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. Stop the dev server (`Ctrl+C`) and restart it (`npm run dev`)
+
+### Port Already in Use
+
+If port 3000 is already in use:
+1. Stop the server using that port
+2. Or run on a different port: `npm run dev -- -p 3001`
+
+### Build Errors
+
+If you get build errors:
+1. Delete the `.next` folder
+2. Run `npm install` again
+3. Restart the dev server
+
+## Support
+
+For issues or questions:
+- Check the main [README.md](README.md) for detailed documentation
+- Review the [SETUP.md](SETUP.md) for more information
+- Open an issue on GitHub
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Additional Configuration
 
 ### Add Repository Description
 
